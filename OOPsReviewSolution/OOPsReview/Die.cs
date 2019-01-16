@@ -69,7 +69,7 @@ namespace OOPsReview
         //  The system will create, internally, a data storage area of the apropriate datatype and manage the area
         //  The only way to access the data of an Auto Implemented Property is via the property
         //  Usually use when there is no need for any internal validation or other proprty logic
-        public int FaceValue { get; set; }
+        public int FaceValue { get; private set; }
 
         public string Color
         {
