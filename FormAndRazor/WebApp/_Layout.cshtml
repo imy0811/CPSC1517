@@ -7,9 +7,10 @@
     <script src="~/Scripts/bootstrap.js"></script>
     @RenderSection("head", required: false)
 </head>
-<body>
-    @DateTime.Today.ToLongDateString()   
+<body>        
     <div class="container-fluid">
+        @RenderPage("~/_Menu.cshtml")
+        <br><br/>
         <div class="jumbotron">
             @RenderSection("banner")
         </div>
