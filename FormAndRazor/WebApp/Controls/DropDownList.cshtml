@@ -1,6 +1,64 @@
 ﻿@{
     Layout = "~/_Layout.cshtml";
 }
+
+@section head{
+    <link href="~/Content/MyCustomeStyles.css" rel="stylesheet" />
+}
+
 @section banner{
     <h1>DropDownList (select tag)</h1>
+}
+
+@if(IsPost)
+{
+    var choice = Request.Form["pageselection"];
+    switch (choice.ToUpper())
+    {
+        case "TEXTBOXES":
+            {
+                //To redirect yourself to another page you use the Reponse.Redirect command
+                //This comman needs the destination page as an argument value
+                //Use relative addressing to get to your destination page
+                //Response.Redirect("../somefolder/thepage.cshtml"); <-- when referencing page in a different folder
+                Response.Redirect("TextBoxes.cshtml");
+                break;
+            }
+        case "RADIOBUTTONS":
+            {
+                Response.Redirect("RadioButtons.cshtml");
+                break;
+            }
+        case "CHECKBOXES":
+            {
+                Response.Redirect("CheckBoxes.cshtml");
+                break;
+            }
+        default:
+            {
+                <p><span style="color:firebrick"><strong>Make a page choice from the list</strong></span></p>
+                break;
+            }
     }
+}
+
+<form id="theform" method="post">
+    <div class="row">
+        <div class="col-md-offset-4">
+            <label for="pageselection">Select sample page:</label>
+            &nbsp;&nbsp;
+            <!--The select tag is used for a dropdown list. Each item in the list is setup using the option tag.
+        A data value is associated with the list item by using the value attribute.-->
+            <select id="pageselection" name="pageselection">
+                <option value="">Select...</option>
+                <option value="TextBoxes">TextBoxes</option>
+                <option value="RadioButtons">RadioButtons</option>
+                <option value="CheckBoxes">CheckBoxes</option>
+            </select>
+            &nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary" id="formbutton" name="formbutton" value="submit">
+                Go to...
+            </button>
+        </div>
+    </div>
+</form>
