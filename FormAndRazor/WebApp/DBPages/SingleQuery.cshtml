@@ -3,7 +3,7 @@
     Page.Title = "DB - Single Query";
 
     var searcharg = Request.Form["searcharg"];
-    var thebutton = Request.Form["formbutton"];
+    var thebutton = Request.Form["formButton"];
     var regionid = "";
     var description = "";
 
@@ -55,6 +55,8 @@
         if(results == null)
         {
             <p><span style="color:blue">No data found for region id @searcharg</span></p>
+            regionid = "";
+            description = "";
         }
         else
         {
@@ -63,7 +65,7 @@
             //How does one access a data field on the resulting data record(s)
             //a) Via index xxxx[columnindex]
             //b) Via the column title xxxx.columntitlename
-            <p><span style="color:green">Found </span></p>
+            <p><span style="color:green">Found</span></p>
             regionid = results[0].ToString();
             description = results.RegionDescription;
         }
